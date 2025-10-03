@@ -30,6 +30,12 @@ class _ListOfTasksScreenState extends State<ListOfTasksScreen> {
               onPressed: themeCtrl.toggleTheme,
             );
           }),
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              ctr.getTaskList();
+            },
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -24,13 +24,13 @@ class Services {
   }
 
   Future<List<TaskModel>> getAllTaskList() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final prefs = await _prefs;
     try {
       final List? tasks = prefs.getStringList(_taskListKey);
       List<TaskModel> newTaskList = <TaskModel>[];
       if (tasks != null && tasks.isNotEmpty) {
         for (var t in tasks) {
-          newTaskList.add(jsonDecode(t));
+          newTaskList.add(TaskModel.fromJson(jsonDecode(t)));
         }
       }
       return newTaskList;
